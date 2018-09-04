@@ -1,70 +1,90 @@
-var player1 = [];
-var player2 = [];
+player1 = [
+  [null, null],
+  [null, null]
+];
+player2 = [
+  [null, null],
+  [null, null]
+];
 
-class Deck {
-  constructor() {
-    this.deck = [];
+ var cardcheck = [];
 
-    const suits = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
-    const points = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10];
-    const values = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
-
-    for (let suit in suits) {
-      for (let value in values) {
-        this.deck.push(`${values[value]} of ${suits[suit]}`);
+function checkcard(){
+  for (var i=0; i<cardcheck.length-1; i++){
+    for (var a=1; a<cardcheck.length; a++){
+      if ((cardcheck[i][0] == cardcheck[a][0]) && (cardcheck[i][1] == cardcheck[a][1]))
+      {
+      deal();
       }
-    }
-
-
-  }
-
-  // total(){
-  //   for (var i = 0; i < player1.length; i++){
-  //     return player1[i] + player1[i];
-  //   }
-  // }
-
-  shuffle(){
-    const { deck } = this;
-    let m = deck.length, i;
-
-    while(m){
-      i = Math.floor(Math.random() * m--);
-      [deck[m], deck[i]] = [deck[i], deck[m]];
-    }
-    return this;
-  }
-
-  deal(){
-    player1 = [];
-    player2 = [];
-    for (var i=0; i < 2; i++ ){
-        var cardd = this.deck.shift();
-        player1.push(cardd);
-    }
-    for (var p=0; p < 2; p++ ){
-        var cardd = this.deck.shift();
-        player2.push(cardd);
-    }
-    console.log("Player 2 has " + player2);
-    console.log("Player 1 has " + player1);
-    console.log(deck1);
-    if (this.deck.length <= 16){
-      alarm("Game over");
-    }
-  }
-
-  total() {
-    for (var i = 0; i < player1.length; i++){
-      var totals =  parseInt(player1[i]) + parseInt(player1[i]);
-      console.log(totals);
     }
   }
 }
 
-const deck1 = new Deck();
-deck1.shuffle();
-console.log(deck1.deck);
-deck1.deal();
-deck1.total();
-console.log(deck1.total);
+deck = ['diamonds', 'spades', 'clubs', 'hearts'];
+function randomcard(){
+  return Math.floor(Math.random() * 10) + 2;
+}
+
+function randomsuit(){
+  return Math.floor(Math.random() * 3) + 0;
+}
+
+function add(player){
+  player.push([randomcard(), deck[randomsuit()]]);
+  console.log(player1)
+}
+
+function player2_ai(){
+  if (player2.totals <= 17){
+    add(player2);
+  }
+  else {
+    console.log("finish");
+  }
+}
+
+
+
+function deal(){
+  player1[0][0] = randomcard();
+  player1[0][1] = deck[randomsuit()];
+  player1[1][0] = randomcard();
+  player1[1][1] = deck[randomsuit()];
+  player2[0][0] = randomcard();
+  player2[0][1] = deck[randomsuit()];
+  player2[1][0] = randomcard();
+  player2[1][1] = deck[randomsuit()];
+  cardcheck.push(player1[0]);
+  cardcheck.push(player1[1]);
+  cardcheck.push(player2[0]);
+  cardcheck.push(player2[1]);
+}
+
+function totals(player){
+  for (var i=0; i<player.length; i++){
+    for (var a=i+1; a<player.length; a++){
+      console.log(player[i][0] + player[a][0]);
+      break;
+    }
+  }
+  return player;
+}
+
+
+
+
+deal();
+checkcard();
+console.log(player1);
+console.log(player2);
+console.log(player1[0][0] + player1[0][1]);
+console.log(player2[0][0] + player2[0][1]);
+console.log(player1[1][0] + player1[1][1]);
+console.log(player2[1][0] + player2[1][1]);
+console.log("player 1 has a total of " + totals(player1[0][0], player1[1][0]));
+console.log("player 2 has a total of " + totals(player2[0][0], player2[1][0]));
+
+player2_ai();
+console.log(totals(player2) + " hello");
+
+console.log(cardcheck);
