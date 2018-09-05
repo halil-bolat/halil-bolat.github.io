@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <link rel="stylesheet" href="master.css">
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
-
-
-
-    
+    <div class="playarea">
+    <div class="player1div">
+      <div class="player1first">
+        <p id="player1first" >card1</p>
+      </div>
+      <div class="player1second">
+        <p id="player1second" >card2</p>
+      </div>
+      <p>total <span id="totalplayer1"></span></p>
+    </div>
+    <div class="middle">
+    <p id="errormessage"></p>
+    </div>
+    <div class="player2div">
+      <div class="player2first">
+        <p id="player2first" >card1</p>
+      </div>
+      <div class="player2second">
+        <p id="player2second" >card2</p>
+      </div>
+      <p>total <span id="totalplayer2"></span></p>
+    </div>
+  </div>
+  <div class="buttonselect">
+    <div class="buttonreset">
+      <button id="buttonreset">reset</button>
+    </div>
+    <div class="buttonhit">
+      <button id="buttonhit">hit</button>
+    </div>
+    <div class="buttonstand">
+      <button id="buttonstand">stand</button>
+    </div>
+  </div>
     <script src="master.js"></script>
   </body>
 </html>
