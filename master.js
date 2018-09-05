@@ -10,15 +10,11 @@ player2 = [
  var cardcheck = [];
 
 function checkcard(){
-  console.log("first one " + cardcheck.length);
-  console.log("Second one " + cardcheck);
   for (var i=0; i<cardcheck.length-1; i++){
     for (var a=i+1; a<cardcheck.length; a++){
-      console.log(cardcheck[i][0], cardcheck[a][0], cardcheck[i][1], cardcheck[a][1]);
-      console.log("[i]",i,"[a]",a );
       if ((cardcheck[i][0] == cardcheck[a][0]) && (cardcheck[i][1] == cardcheck[a][1]))
       {
-        document.getElementById('errormessage').innerHTML = "ERROR!";
+        console.log("Error");
       }
     }
   }
@@ -37,17 +33,42 @@ function randomsuit(){
   return Math.floor(Math.random() * 4);
 }
 
+function addingcard(){
+  var playeradd = document.createElement('div');
+  playeradd.className = "playercard";
+  playeradd.id = cardcheck[cardcheck.length-1];
+  playeradd.innerHTML = cardcheck[cardcheck.length-1];
+  playeradd.innerHTML = "<img class='cards' src='PNG/" + playeradd.innerHTML + ".png'>";
+  document.getElementById('player1div').prepend(playeradd);
+}
+
 function add(player){
   player.push([randomcard(), deck[randomsuit()]]);
-  cardcheck.push(player[player.length-1]);
+  cardcheck.push(player[player.length-1].join(""));
   checkcard();
-  console.log(player);
+  addingcard();
+}
+
+function addingcard2(){
+  var playeradd = document.createElement('div');
+  playeradd.className = "playercard";
+  playeradd.id = cardcheck[cardcheck.length-1];
+  playeradd.innerHTML = cardcheck[cardcheck.length-1];
+  playeradd.innerHTML = "<img class='cards' src='PNG/" + playeradd.innerHTML + ".png'>";
+  document.getElementById('player2div').prepend(playeradd);
+}
+
+function add2(player){
+  player.push([randomcard(), deck[randomsuit()]]);
+  cardcheck.push(player[player.length-1].join(""));
+  checkcard();
+  addingcard2();
 }
 
 function player2_ai(player){
   if (totals(player2) <= totals(player1)){
     while (totals(player2) <= 17){
-      add(player);
+      add2(player);
     }
   }
   else {
@@ -66,7 +87,7 @@ function winner(){
     }
   }
   else {
-    alert("YOU LOSE!");
+    alert("YOU WIN!");
   }
 }
 
@@ -91,7 +112,7 @@ function totals(player){
   for (var i=0; i<player.length; i++){
       scores += player[i][0];
       if (scores > 21){
-        console.log("BUST!");
+        console.log("RAAA FAM!");
       }
   }
   return scores;
@@ -121,6 +142,10 @@ document.getElementById("buttonstand").addEventListener("click", function(){
   document.getElementById('totalplayer2').innerHTML = totals(player2);
 });
 
+
+document.getElementById('buttonreset').addEventListener("click", function(){
+  location.reload();
+})
 var cardvar = document.getElementById('player1first');
 var cardvar1 = document.getElementById('player1second');
 var cardvar2 = document.getElementById('player2first');
