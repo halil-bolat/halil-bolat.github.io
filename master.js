@@ -14,7 +14,7 @@ function checkcard(){
     for (var a=i+1; a<cardcheck.length; a++){
       if ((cardcheck[i][0] == cardcheck[a][0]) && (cardcheck[i][1] == cardcheck[a][1]))
       {
-        console.log("Error");
+        location.reload();
       }
     }
   }
@@ -28,6 +28,7 @@ deck = ["Diamonds", "Spades", "Clubs", "Hearts"];
 function randomcard(){
   return Math.floor(Math.random() * 10) + 2;
 }
+
 
 function randomsuit(){
   return Math.floor(Math.random() * 4);
@@ -67,7 +68,7 @@ function add2(player){
 
 function player2_ai(player){
   if (totals(player2) <= totals(player1)){
-    while (totals(player2) <= 17){
+    while (totals(player2) < 17 && totals(player2) <= totals(player1)){
       add2(player);
     }
   }
@@ -76,17 +77,36 @@ function player2_ai(player){
   }
 }
 
+function unhide(){
+  document.querySelector('#player2div #player2second img').style.display = "block";
+  document.querySelector('#totalfor2 p').style.display = "block";
+}
+
+if(!localStorage.getItem('player1')) {
+  localStorage.setItem('player1', 0);
+}
+
+
+
 
 function winner(){
+  unhide();
   if ((totals(player1) <= 21) && (totals(player2) <= 21)){
     if (totals(player1) > totals(player2)){
-      alert("player1 wins");
+      // alert("player1 wins");
+      localStorage.setItem('player1', parseInt(localStorage.getItem('player1'))+1);
+      console.log(localStorage.getItem('player1'));
+    }
+    else if (totals(player1) == totals(player2)){
+      alert("draw");
     }
     else {
       alert("player 2 wins");
     }
   }
   else {
+    localStorage.setItem('player1', parseInt(localStorage.getItem('player1'))+1);
+    console.log(localStorage.getItem('player1'));
     alert("YOU WIN!");
   }
 }
@@ -108,37 +128,37 @@ function deal(){
 
 
 function totals(player){
+  console.log("im in totals");
   var scores = 0;
   for (var i=0; i<player.length; i++){
       scores += player[i][0];
       if (scores > 21){
-        console.log("RAAA FAM!");
+        //needs work!!
       }
   }
   return scores;
 };
 deal();
-console.log(player1);
-console.log(player2);
-console.log(player1[0][0] + player1[0][1]);
-console.log(player1[1][0] + player1[1][1]);
-console.log(player2[0][0] + player2[0][1]);
-console.log(player2[1][0] + player2[1][1]);
-console.log("player 1 has a total of " + totals(player1));
-console.log("player 2 has a total of " + totals(player2));
-console.log(cardcheck);
-
 
 document.getElementById("buttonhit").addEventListener("click", function(){
   add(player1);
   console.log(totals(player1));
   document.getElementById('totalplayer1').innerHTML = totals(player1);
 });
+function hidestand() {
+ document.getElementById('buttonstand').style.display = "none";
+}
+function hidehit() {
+  document.getElementById('buttonhit').style.display = "none";
+}
 
 document.getElementById("buttonstand").addEventListener("click", function(){
   player2_ai(player2);
   totals(player2);
-  winner();
+  checkcard();
+  setTimeout(winner, 750);
+  hidehit();
+  hidestand();
   document.getElementById('totalplayer2').innerHTML = totals(player2);
 });
 
@@ -146,6 +166,8 @@ document.getElementById("buttonstand").addEventListener("click", function(){
 document.getElementById('buttonreset').addEventListener("click", function(){
   location.reload();
 })
+
+
 var cardvar = document.getElementById('player1first');
 var cardvar1 = document.getElementById('player1second');
 var cardvar2 = document.getElementById('player2first');
@@ -160,4 +182,5 @@ cardvar.innerHTML = "<img class='cards' src='PNG/" + cardvar.innerHTML + ".png'>
 cardvar1.innerHTML = "<img class='cards' src='PNG/" + cardvar1.innerHTML + ".png'></img>";
 cardvar2.innerHTML = "<img class='cards' src='PNG/" + cardvar2.innerHTML + ".png'></img>";
 cardvar3.innerHTML = "<img class='cards' src='PNG/" + cardvar3.innerHTML + ".png'></img>";
-checkcard();
+
+setTimeout(checkcard, 200);

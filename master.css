@@ -1,7 +1,33 @@
+
+.inst {
+  float: right;
+  border: 2px solid black;
+  width: auto;
+  height: 500px;
+  width: 400px;
+  margin: 20px;
+}
+
+h1 {
+  text-align:center;
+}
+
+#totalfor2 p{
+  display:none;
+}
+
+#player2div #player2second img{
+  display: none;
+}
+#player2div #player2second{
+  background-image: url("PNG/blue_back.png");
+  background-size: cover;
+}
+
+
 .main {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50px;
+  float: left;
+  margin: 20px;
   height: 500px;
   width: 500px;
   background-image: url('background.jpg');
@@ -17,12 +43,16 @@
   float: left;
   font-weight: bold;
   margin-left: 30px;
+  color: white;
+  text-shadow: 1px 1px 5px black;
 }
 
 .totals2 {
   float: right;
   font-weight: bold;
   margin-right: 60px;
+  color: white;
+  text-shadow: 1px 1px 5px black;
 }
 
 

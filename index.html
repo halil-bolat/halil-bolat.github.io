@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="master.css">
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
-    <h1 align="center">Welcome to Blackjack!</h1>
+    <h1>Welcome to Blackjack!</h1>
     <div class="main">
       <div class="buttonselect" align=center>
         <div class="buttonreset">
-          <button id="buttonreset">reset</button>
+          <button id="buttonreset" class="btn btn-primary border">reset</button>
         </div>
         <div class="buttonhit">
-          <button id="buttonhit">hit</button>
+          <button id="buttonhit" class="btn btn-success border">hit</button>
         </div>
         <div class="buttonstand">
-          <button id="buttonstand">stand</button>
+          <button id="buttonstand" class="btn btn-danger border">stand</button>
         </div>
       </div>
     <div class="cover">
@@ -24,16 +25,14 @@
       <div class="totals">
       <p>Player One <span id="totalplayer1"></span></p>
     </div>
-    <div class="totals2">
+    <div class="totals2" id="totalfor2">
     <p>Player Two <span id="totalplayer2"></span></p>
   </div>
 </div>
     <div id="player1div">
       <div class="playercard" id="player1first">
-        <p class="playerdetail"  id="player1first">card1</p>
       </div>
       <div class="playercard" id="player1second">
-        <p class="playerdetail" id="player1second">card2</p>
       </div>
 
 
@@ -41,15 +40,17 @@
 
     <div id="player2div">
       <div class="playercard" id="player2first">
-        <p class="playercard" id="player2first" >card1</p>
       </div>
       <div class="playercard" id="player2second">
-        <p class="playercard" id="player2second" >card2</p>
       </div>
 
     </div>
   </div>
 
+    </div>
+    <div class="inst">
+      <h3 align="center">Instructions</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
     <script src="master.js"></script>
   </body>
