@@ -1,0 +1,144 @@
+
+#scoreboard {
+  margin-bottom: 0px;
+  margin-left: 0px;
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  text-shadow: 1px 1px 5px black;
+  margin-left: 5px;
+  font-size: 13px;
+  background-color: black;
+  border:2px solid black;
+}
+
+
+
+#infototal {
+  border: 2px solid black;
+  background-color: white;
+  margin-left: 176px;
+  margin-top: 200px;
+  text-align: center;
+  vertical-align: middle;
+  position: fixed;
+  font-weight: bold;
+  font-size: 30px;
+  display: none;
+}
+
+.inst {
+  display: inline-block;
+  border: 2px solid black;
+  width: auto;
+  height: auto;
+  width: 400px;
+  margin-left: 20px;
+}
+
+h1 {
+  text-align:center;
+}
+
+#totalfor2 p{
+  display:none;
+}
+
+#player2div #player2second img{
+  display: none;
+}
+#player2div #player2second{
+  background-image: url("PNG/blue_back.png");
+  background-size: cover;
+}
+
+
+.main {
+  float: left;
+  margin-left: 100px;
+  height: 500px;
+  width: 500px;
+  background-image: url('background.jpg');
+  background-size: cover;
+}
+
+.totalscover {
+  width: 100%;
+  display: inline-block;
+}
+
+.totals {
+  float: left;
+  font-weight: bold;
+  margin-left: 30px;
+  color: white;
+  text-shadow: 1px 1px 5px black;
+}
+
+.totals2 {
+  float: right;
+  font-weight: bold;
+  margin-right: 60px;
+  color: white;
+  text-shadow: 1px 1px 5px black;
+}
+
+
+.playercard {
+  display: table-cell;
+  width: 80px;
+  height: 120px;
+  float:left;
+}
+
+#player1div {
+  display: table-cell;
+  width: 40%;
+  float:left;
+  height: 100%;
+  margin-left: 45px;
+}
+
+#player2div {
+  display: table-cell;
+  width: 40%;
+  float:right;
+  height: 100%;
+}
+
+.cards {
+  width:80px;
+  float: left;
+  height: 100%;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.cover {
+  margin-top: 0px;
+  min-height: 200px;
+  max-height:100%;
+  margin:10px;
+}
+
+
+.buttonselect {
+  display: flex;
+  justify-content: center;
+  float: right;
+}
+
+.buttonreset {
+  width: 100px;
+  float: left;
+}
+
+.buttonhit {
+  width: 100px;
+  float: left;
+}
+
+.buttonstand {
+  width: 100px;
+  float: left;
+}
