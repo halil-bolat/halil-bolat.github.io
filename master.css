@@ -1,4 +1,22 @@
 
+#scoreboard {
+  margin-bottom: 0px;
+  margin-left: 0px;
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  text-shadow: 1px 1px 5px black;
+  margin-left: 5px;
+}
+
+
+
+#infototal {
+  float: left;
+  position: absolute;
+  margin-left: 20px;
+}
+
 .inst {
   float: right;
   border: 2px solid black;
@@ -97,7 +115,7 @@ h1 {
 .buttonselect {
   display: flex;
   justify-content: center;
-
+  float: right;
 }
 
 .buttonreset {

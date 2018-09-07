@@ -14,7 +14,7 @@ function checkcard(){
     for (var a=i+1; a<cardcheck.length; a++){
       if ((cardcheck[i][0] == cardcheck[a][0]) && (cardcheck[i][1] == cardcheck[a][1]))
       {
-        location.reload();
+        ////
       }
     }
   }
@@ -68,7 +68,7 @@ function add2(player){
 
 function player2_ai(player){
   if (totals(player2) <= totals(player1)){
-    while (totals(player2) < 17 && totals(player2) <= totals(player1)){
+    while ((totals(player2) < 17) && (totals(player2) <= totals(player1))){
       add2(player);
     }
   }
@@ -96,18 +96,28 @@ function winner(){
       // alert("player1 wins");
       localStorage.setItem('player1', parseInt(localStorage.getItem('player1'))+1);
       console.log(localStorage.getItem('player1'));
+      document.getElementById('infototal').innerHTML = "Player 1 wins";
+      hidehit();
+      hidestand();
     }
     else if (totals(player1) == totals(player2)){
-      alert("draw");
+      document.getElementById('infototal').innerHTML = "It's a DRAW!";
+      hidehit();
+      hidestand();
     }
     else {
-      alert("player 2 wins");
+      document.getElementById("infototal").innerHTML = "Player2 wins";
+      console.log("hello?");
+      hidehit();
+      hidestand();
     }
   }
   else {
     localStorage.setItem('player1', parseInt(localStorage.getItem('player1'))+1);
     console.log(localStorage.getItem('player1'));
-    alert("YOU WIN!");
+    document.getElementById("infototal").innerHTML = "Player 1 wins";
+    hidehit();
+    hidestand();
   }
 }
 
@@ -133,12 +143,14 @@ function totals(player){
   for (var i=0; i<player.length; i++){
       scores += player[i][0];
       if (scores > 21){
-        //needs work!!
+        document.getElementById("infototal").innerHTML = "Player bust";
+        hidehit();
+        hidestand();
       }
   }
-  return scores;
-};
+return scores;};
 deal();
+
 
 document.getElementById("buttonhit").addEventListener("click", function(){
   add(player1);
@@ -155,8 +167,7 @@ function hidehit() {
 document.getElementById("buttonstand").addEventListener("click", function(){
   player2_ai(player2);
   totals(player2);
-  checkcard();
-  setTimeout(winner, 750);
+  winner();
   hidehit();
   hidestand();
   document.getElementById('totalplayer2').innerHTML = totals(player2);
@@ -182,5 +193,7 @@ cardvar.innerHTML = "<img class='cards' src='PNG/" + cardvar.innerHTML + ".png'>
 cardvar1.innerHTML = "<img class='cards' src='PNG/" + cardvar1.innerHTML + ".png'></img>";
 cardvar2.innerHTML = "<img class='cards' src='PNG/" + cardvar2.innerHTML + ".png'></img>";
 cardvar3.innerHTML = "<img class='cards' src='PNG/" + cardvar3.innerHTML + ".png'></img>";
+
+document.getElementById('score').innerHTML = localStorage.getItem('player1');
 
 setTimeout(checkcard, 200);
