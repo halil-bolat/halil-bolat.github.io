@@ -77,13 +77,17 @@ function player2_ai(player){
   }
 }
 
+function unhidetotal(){
+  document.querySelector('#infototal').style.display = "block";
+}
+
 function unhide(){
   document.querySelector('#player2div #player2second img').style.display = "block";
   document.querySelector('#totalfor2 p').style.display = "block";
 }
 
 if(!localStorage.getItem('player1')) {
-  localStorage.setItem('player1', 0);
+  localStorage.setItem('player1', 10);
 }
 
 
@@ -93,21 +97,26 @@ function winner(){
   unhide();
   if ((totals(player1) <= 21) && (totals(player2) <= 21)){
     if (totals(player1) > totals(player2)){
-      // alert("player1 wins");
       localStorage.setItem('player1', parseInt(localStorage.getItem('player1'))+1);
       console.log(localStorage.getItem('player1'));
       document.getElementById('infototal').innerHTML = "Player 1 wins";
+      checkfinal();
+      unhidetotal();
       hidehit();
       hidestand();
     }
     else if (totals(player1) == totals(player2)){
       document.getElementById('infototal').innerHTML = "It's a DRAW!";
+      checkfinal();
+      unhidetotal();
       hidehit();
       hidestand();
     }
     else {
-      document.getElementById("infototal").innerHTML = "Player2 wins";
-      console.log("hello?");
+      document.getElementById("infototal").innerHTML = "Dealer wins";
+      localStorage.setItem('player1', parseInt(localStorage.getItem('player1'))-1);
+      checkfinal();
+      unhidetotal();
       hidehit();
       hidestand();
     }
@@ -116,6 +125,8 @@ function winner(){
     localStorage.setItem('player1', parseInt(localStorage.getItem('player1'))+1);
     console.log(localStorage.getItem('player1'));
     document.getElementById("infototal").innerHTML = "Player 1 wins";
+    checkfinal();
+    unhidetotal();
     hidehit();
     hidestand();
   }
@@ -136,6 +147,12 @@ function deal(){
   cardcheck.push(player2[1]);
 };
 
+function checkfinal() {
+  if (localStorage.getItem('player1') <= 0){
+    document.getElementById("infototal").innerHTML = "Player Lost!";
+    localStorage.setItem('player1', 10);
+  }
+}
 
 function totals(player){
   console.log("im in totals");
@@ -144,11 +161,23 @@ function totals(player){
       scores += player[i][0];
       if (scores > 21){
         document.getElementById("infototal").innerHTML = "Player bust";
+        checkfinal();
+        unhidetotal();
         hidehit();
         hidestand();
+        if (player != player1){
+          console.log("YES");
+        }
+        else {
+          localStorage.setItem('player1', parseInt(localStorage.getItem('player1'))-1);
+        }
       }
   }
-return scores;};
+return scores;
+};
+
+
+
 deal();
 
 

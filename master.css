@@ -12,18 +12,25 @@
 
 
 #infototal {
-  float: left;
-  position: absolute;
-  margin-left: 20px;
+  border: 2px solid black;
+  background-color: white;
+  margin-left: 176px;
+  margin-top: 200px;
+  text-align: center;
+  vertical-align: middle;
+  position: fixed;
+  font-weight: bold;
+  font-size: 30px;
+  display: none;
 }
 
 .inst {
-  float: right;
+  display: inline-block;
   border: 2px solid black;
   width: auto;
-  height: 500px;
+  height: auto;
   width: 400px;
-  margin: 20px;
+  margin-left: 20px;
 }
 
 h1 {
@@ -45,7 +52,7 @@ h1 {
 
 .main {
   float: left;
-  margin: 20px;
+  margin-left: 100px;
   height: 500px;
   width: 500px;
   background-image: url('background.jpg');
