@@ -14,14 +14,12 @@ function checkcard(){
     for (var a=i+1; a<cardcheck.length; a++){
       if ((cardcheck[i][0] == cardcheck[a][0]) && (cardcheck[i][1] == cardcheck[a][1]))
       {
-        ////
+        ////to do
       }
     }
   }
 }
-// var hearts = document.getElementsByClassName('suits').innerHTML = "<img class='suits' src='hearts.png'></img>";
-// var diamonds = document.getElementsByClassName('suits').innerHTML = "<img class='suits' src='diamonds.png'></img>";
-// var clubs = document.getElementsByClassName('suits').innerHTML = "<img class='suits' src='clubs.png'></img>";
+
 
 
 deck = ["Diamonds", "Spades", "Clubs", "Hearts"];
@@ -46,7 +44,6 @@ function addingcard(){
 function add(player){
   player.push([randomcard(), deck[randomsuit()]]);
   cardcheck.push(player[player.length-1].join(""));
-  checkcard();
   addingcard();
 }
 
@@ -62,7 +59,6 @@ function addingcard2(){
 function add2(player){
   player.push([randomcard(), deck[randomsuit()]]);
   cardcheck.push(player[player.length-1].join(""));
-  checkcard();
   addingcard2();
 }
 
@@ -149,7 +145,7 @@ function deal(){
 
 function checkfinal() {
   if (localStorage.getItem('player1') <= 0){
-    document.getElementById("infototal").innerHTML = "Player Lost!";
+    document.getElementById("infototal").innerHTML = "GAME OVER!";
     localStorage.setItem('player1', 10);
   }
 }

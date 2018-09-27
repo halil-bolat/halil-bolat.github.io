@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="master.css">
+    <link rel="stylesheet" href="css/master.css">
     <meta charset="utf-8">
     <title></title>
   </head>
@@ -53,10 +53,17 @@
 
     </div>
     <div class="inst">
-      <h3 align="center">Instructions</h3>
-      <p>Main aim is to have 21 or closest to 21. If player goes above 21, player will lose 2 game points. If dealer has a closer total to 21 player will only lose 1 game point. If player runs out of game points is game over and game will reset player to 10 game points.</p><br/><h3>Controls</h3><br><button id="buttonreset" class="btn btn-primary border">reset</button><br><p>this button would reset the hand.</p><br><button id="buttonhit" class="btn btn-success border">hit</button><br><p>this button would pick another random card.</p><br>
-      <button id="buttonstand" class="btn btn-danger border">stand</button><p>This button will allow you to stand and then its time for the dealer to play</p><br><br>
+      <h1> Blackjack Game Project</h1>
+
+      <h2>Rules</h2>
+       The main objective in Blackjack is to have the closest total to 21 but not above, if you go above 21 you bust. If you bust you lose 2 game points, if your total is lower than the dealers total you will lose 1 point. If dealer busts you will gain 1 point, and if your total is higher than dealers total you will gain 1 game point, if you run out of game points it is Game over and you will start all over again. Your game points would be on top left within a black rectangle, and the total of your hand would be next to 'Player One'. GOOD LUCK!
+
+      <h2> Controls </h2>
+      <button id="buttonhit" class="btn btn-success border">Hit</button> --  Click on 'Hit' to pick up a random card. <br>
+      <button id="buttonstand" class="btn btn-danger border">Stand</button> --  Click on 'Stand' to end your turn. <br>
+      <button id="buttonreset" class="btn btn-primary border">Reset</button> --  Click on reset to start a new hand.<br>
+
     </div>
-    <script src="master.js"></script>
+    <script src="javascript/master.js"></script>
   </body>
 </html>
